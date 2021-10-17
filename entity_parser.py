@@ -3,7 +3,7 @@ import os
 from flask import Flask, render_template, request
 from flasgger import Swagger
 
-path = r"C:\Users\ujjwa\Desktop\Capstone\Deploy\NER_Model"
+path = "https://github.com/u-shekhar/entity-parser/tree/main/NER_Model"
 nlp = spacy.load(path)
 
 # Defining the name (will fetch from the actual file name)
