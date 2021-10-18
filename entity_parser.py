@@ -2,9 +2,12 @@ import spacy
 import os
 from flask import Flask, render_template, request
 from flasgger import Swagger
+import requests
+import pickle
 
-path = "https://github.com/u-shekhar/entity-parser/tree/main/NER_Model"
-nlp = spacy.load(path)
+model_path = r"pehla_pehla_model.pkl"
+pickled_model = open(model_path,"rb")
+parser = pickle.load(pickled_model)
 
 # Defining the name (will fetch from the actual file name)
 app = Flask(__name__)
@@ -13,7 +16,7 @@ Swagger(app)
 # Defingin the path or url attahced after the local ip
 @app.route('/', methods=['GET'])
 def get_entities():
-    """ Practicing Swagger
+    """ Entity Parser for Grocery Recommender
     ---
     parameters:
      - name: input_string
@@ -27,7 +30,7 @@ def get_entities():
     """
 
     input = request.args.get("input_string")
-    doc = nlp(input)
+    doc = parser(input)
     op = ""
     for ent in doc.ents :
         op = op + ent.text + ":" + ent.label_ + ";"
