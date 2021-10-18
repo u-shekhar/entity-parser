@@ -16,7 +16,7 @@ parser = pickle.load(open("pehla_pehla_model.pkl","rb"))
 def welcome():
     return "Runing! add /apidocs at the url end to go to parser"
 
-@app.route('/parse', methods=['POST'])
+@app.route('/parse',methods=['GET'])
 def get_entities():
     """ Entity Parser for Grocery Recommender
     ---
@@ -25,6 +25,7 @@ def get_entities():
        in: query
        type: string
        required: true
+
     responses:
        200:
             description: Entities are 
