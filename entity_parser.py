@@ -18,28 +18,28 @@ parser = pickle.load(pickled_model)
 def welcome():
     return "Runing! add /apidocs at the url end to go to parser"
 
-@app.route('/parse', methods=['POST'])
-def get_entities():
-    """ Entity Parser for Grocery Recommender
-    ---
-    parameters:
-     - name: input_string
-       in: query
-       type: string
-       required: true
-    responses:
-       200:
-            description: Entities are 
+# @app.route('/parse', methods=['POST'])
+# def get_entities():
+#     """ Entity Parser for Grocery Recommender
+#     ---
+#     parameters:
+#      - name: input_string
+#        in: query
+#        type: string
+#        required: true
+#     responses:
+#        200:
+#             description: Entities are 
 
-    """
+#     """
 
-    input_string = request.args.get("input_string")
-    doc = parser(input_string)
-    op = ""
-    for ent in doc.ents :
-        op = op + ent.text + ":" + ent.label_ + ";"
+#     input_string = request.args.get("input_string")
+#     doc = parser(input_string)
+#     op = ""
+#     for ent in doc.ents :
+#         op = op + ent.text + ":" + ent.label_ + ";"
 
-    return op
+#     return op
 
 if __name__ == "__main__":
     # Use debug only when required. With debug no need to stop the server every time.
