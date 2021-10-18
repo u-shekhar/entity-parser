@@ -13,8 +13,11 @@ parser = pickle.load(pickled_model)
 app = Flask(__name__)
 Swagger(app)
 
+@app.route('/')
+def welcome():
+    return "Running"
 # Defingin the path or url attahced after the local ip
-@app.route('/', methods=['GET'])
+@app.route('/parse', methods=['POST'])
 def get_entities():
     """ Entity Parser for Grocery Recommender
     ---
